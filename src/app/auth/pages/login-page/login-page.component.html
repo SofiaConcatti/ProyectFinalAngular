@@ -1,0 +1,37 @@
+<main>
+    <mat-card class="col-4">
+        <mat-card-header class="mb-3 flex justify-content-center headerTitleStyle">
+            <img class="logo" src="https://cdn-icons-png.flaticon.com/512/1253/1253507.png" />
+            <mat-card-title>
+                <h1 class="loginTitle">Welcome to ElearningPro</h1>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <!-- Login Form -->
+            <form [formGroup]="form" class="flex flex-column">
+                <mat-form-field class="mat-form-field-style" appearance="outline">
+                    <mat-label>enter a valid email address</mat-label>
+                    <input formControlName="email" type="email" matInput placeholder="enter your email address">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>password must be at least 10 characters </mat-label>
+                    <input formControlName="password" type="password" matInput placeholder="enter your password">
+                    <mat-icon matSuffix>key</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>select a role</mat-label>
+                    <mat-select formControlName="rol">
+                        <mat-option *ngFor="let rol of rolTypes" [value]="rol">
+                            {{ rol }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <!-- Login button -->
+        <mat-card-actions class="flex justify-content-center">
+            <button class="loginButton" [disabled]="form.invalid" mat-flat-button color="primary" (click)="login()">{{ loading ? 'Loading session' : 'Login' }}</button>
+        </mat-card-actions>
+    </mat-card>
+</main>

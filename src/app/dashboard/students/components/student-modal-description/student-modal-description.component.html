@@ -1,0 +1,18 @@
+<mat-dialog-content>
+    <h1 mat-dialog-title>Full description of {{student | fullnamePipe }}</h1>
+    <div mat-dialog-content>
+        <ul>
+            <li>
+                Name: {{student.firstName}}
+            </li>
+            <li>
+                Last Name: {{student.lastName}}
+            </li>
+            <li>
+                Email: {{student.email}}
+            </li>
+            <li>
+                Active: {{student.isActive}}
+            </li>
+        </ul>
+    </div>

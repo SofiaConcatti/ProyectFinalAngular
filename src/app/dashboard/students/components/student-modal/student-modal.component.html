@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add Student</h1>
+<div mat-dialog-content>
+    <form class="flex flex-column" [formGroup]="studentForm">
+        <div class="mb-2">
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input [formControl]="firstNameControl" matInput>
+                <app-error-helper [control]="firstNameControl"></app-error-helper>
+            </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Lastname</mat-label>
+            <input [formControl]="lastNameControl" matInput>
+            <app-error-helper [control]="lastNameControl"></app-error-helper>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input [formControl]="emailControl" matInput>
+            <app-error-helper [control]="emailControl"></app-error-helper>
+        </mat-form-field>
+        <mat-label>Active</mat-label>
+        <mat-slide-toggle [checked]="true"></mat-slide-toggle>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button [disabled]="studentForm.invalid" [mat-dialog-close]="studentForm.value" cdkFocusInitial>Save</button>
+</div>

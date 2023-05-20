@@ -1,0 +1,9 @@
+<a routerLink="students" class="logo"><img class="logo" src="https://res.cloudinary.com/ijac-it-solutions/image/upload/v1673219528/img/school_jfcikm.png" /></a>
+
+<ul>
+    <li><a routerLink="students">Students</a></li>
+    <li><a routerLink="courses">Courses</a></li>
+    <li><a routerLink="registrations">Registrations</a></li>
+    <!--  disable Users if not an Admin -->
+    <li [ngClass]="{'disabled': !isAdmin}"><a routerLink="users">Users</a></li>
+</ul>

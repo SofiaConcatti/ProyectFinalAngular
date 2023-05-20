@@ -1,0 +1,14 @@
+<mat-toolbar class="flex align-items-center justify-content-between mat-elevation-z8" color="primary">
+    <button type="button" mat-icon-button (click)="toggleSidebar.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+    <b style="cursor: pointer;" *ngIf="user | async;else templateName" routerLink="my-profile">
+    <!-- Image avatar -->
+    <img src="{{ (user | async)?.avatar }}" alt="avatar" class="avatar" />  
+    Welcome {{ (user | async)?.fullName + ' Role: ' + (user | async)?.rol }}
+  </b>
+    <button (click)="authService.logOut()" color="warn" mat-flat-button>Log Out</button>
+    <ng-template #templateName>
+        <button routerLink="/auth/login" mat-flat-button color="primary">Log In</button>
+    </ng-template>
+</mat-toolbar>

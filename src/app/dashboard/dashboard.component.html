@@ -1,0 +1,13 @@
+<mat-drawer-container class="dashboard-container" autosize>
+    <mat-drawer [opened]="true" #drawer class="sidenav mat-elevation-z8" mode="side">
+        <app-nav-menu></app-nav-menu>
+    </mat-drawer>
+
+    <app-header (toggleSidebar)="drawer.toggle()" class="header"></app-header>
+
+    <app-page-wrapper>
+        <app-theme-switcher></app-theme-switcher>
+        <router-outlet></router-outlet>
+    </app-page-wrapper>
+    <app-footer></app-footer>
+</mat-drawer-container>

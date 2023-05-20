@@ -1,0 +1,71 @@
+<div class="button-container">
+    <button mat-fab color="primary" (click)="addRegistrationToAPI()" class="addButton">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+<table mat-table [dataSource]="(registrations | async) || []">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>
+                ID
+            </p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="registrationCode">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Registration Code</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.registrationCode}}</td>
+    </ng-container>
+    <ng-container matColumnDef="studentName">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Student Name</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.studentFullName.firstName + " " + element.studentFullName.lastName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="courseName">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Course Name</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.courseName.courseId + " - " + element.courseName.courseName}}</td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Date</p>
+        </th>
+        <td mat-cell *matCellDef="let element">{{element.date}}</td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Edit</p>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="editRegistrationFromAPI(element)" mat-icon-button color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Delete</p>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="deleteRegistrationFromAPI(element.id)" mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>
+            <p appRegistrationsPage>Description</p>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <button (click)="showDescriptionRegistration(element)" mat-icon-button>
+      <mat-icon>info</mat-icon>
+    </button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

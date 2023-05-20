@@ -1,0 +1,25 @@
+<small class="text-danger">
+  <div *ngFor="let error of control?.errors | keyvalue">
+    <div [ngSwitch]="error.key">
+      <div *ngSwitchCase="'required'">
+        This field is required
+      </div>
+      <div *ngSwitchCase="'minlength'">
+        This field must have at least {{error.value.requiredLength}} characters
+      </div>
+      <div *ngSwitchCase="'maxlength'">
+        This field must have at most {{error.value.requiredLength}} characters
+      </div>
+      <div *ngSwitchCase="'email'">
+        This field must be a valid email
+      </div>
+      <div *ngSwitchCase="'passwordsMatchValidator'">
+        Passwords must match
+      </div>
+      <div *ngSwitchCase="'pattern'">
+        This field must be a valid number
+      </div>
+      <div *ngSwitchDefault>Error Unknown</div>
+    </div>
+  </div>
+ </small>
